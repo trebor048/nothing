@@ -35,10 +35,6 @@ Compress-Archive -Path "$releaseDir/*" -DestinationPath "$releaseDir/jellyfin-pl
 $manifestPath = "$releaseDir/manifest.json"
 $manifest = Get-Content $manifestPath -Raw | ConvertFrom-Json
 
-# Update GitHub URLs
-$manifest.description = $manifest.description -replace "trebor048", $GitHubUsername
-$manifest.imageUrl = $manifest.imageUrl -replace "trebor048", $GitHubUsername
-
 # Update version info
 foreach ($ver in $manifest.versions) {
     if ($ver.version -eq $Version) {
