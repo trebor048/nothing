@@ -255,34 +255,6 @@ npm run type-check
 - Some media formats may not be compatible
 - Check that Web Audio API is enabled in your browser
 
-## Publishing to Plugin Repositories
-
-This plugin is designed to be published to Jellyfin plugin repositories like the [Universal Plugin Repository](https://github.com/0belous/universal-plugin-repo).
-
-### Release Process
-
-1. **Update Version**: Increment version in `manifest.json` and update changelog
-2. **Create Release**:
-   ```bash
-   # PowerShell (Windows)
-   .\release.ps1 -Version "1.2.0" -GitHubUsername "yourusername"
-
-   # Or manually:
-   npm run build
-   # Generate checksum of dist/jellyfin-plugin-milkdropvisualizer.js
-   # Create zip with manifest.json and built plugin
-   ```
-3. **GitHub Release**: Create a new release on GitHub with the generated zip file
-4. **Update Repository Manifest**: Submit a PR to the plugin repository with your updated manifest
-
-### Repository Manifest Format
-
-The `manifest.json` follows the standard Jellyfin plugin repository format with:
-- Unique GUID for the plugin
-- Multiple version support with checksums
-- Proper categorization and metadata
-- Direct download links from GitHub releases
-
 ## License
 
 MIT License - see LICENSE file for details
