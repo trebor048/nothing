@@ -1,0 +1,14 @@
+{
+  "name": "MilkDrop Visualizer",
+  "description": "Adds a MilkDrop-style music visualizer to the Jellyfin web player",
+  "id": "MilkDropVisualizer",
+  "version": "1.0.0",
+  "type": "web",
+  "targetAbi": "10.8.0.0",
+  "owner": "Your Name",
+  "category": "General",
+  "imageUrl": "",
+  "web": {
+    "main": "jellyfin-plugin-milkdropvisualizer.js"
+  }
+}
