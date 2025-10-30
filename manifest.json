@@ -1,0 +1,35 @@
+{
+    "guid":  "77506750-1aac-4a36-a971-e5bf07240677",
+    "name":  "MilkDrop Visualizer",
+    "description":  "Adds a MilkDrop-style music visualizer to the Jellyfin web player with 24+ presets, multiple visualization modes, and audio-reactive features\n\nhttps://github.com/trebor048/nothing",
+    "overview":  "Real-time MilkDrop-style music visualizer for Jellyfin web player with beat detection, multiple visualization modes, and customizable presets",
+    "owner":  "trebor048",
+    "category":  "General",
+    "imageUrl":  "https://raw.githubusercontent.com/trebor048/nothing/main/milkdrop.jpg",
+    "versions":  [
+                     {
+                         "version":  "1.2.0",
+                         "changelog":  "https://github.com/trebor048/nothing/blob/main/CHANGELOG.md",
+                         "targetAbi":  "10.10.0.0",
+                         "sourceUrl":  "https://github.com/trebor048/nothing/releases/download/v1/jellyfin-plugin-milkdropvisualizer.zip",
+                         "checksum":  "sha256:5b0546b47ecb3f7479baae9fe0d36dd36eccd4fc86ae9a4c871e4bdd784789dd",
+                         "timestamp":  "2025-10-30T00:00:00Z"
+                     },
+                     {
+                         "version":  "1.1.0",
+                         "changelog":  "https://github.com/trebor048/nothing/blob/main/CHANGELOG.md",
+                         "targetAbi":  "10.9.0.0",
+                         "sourceUrl":  "https://github.com/trebor048/nothing/releases/download/v1.1.0/jellyfin-plugin-milkdropvisualizer.zip",
+                         "checksum":  "sha256:5b0546b47ecb3f7479baae9fe0d36dd36eccd4fc86ae9a4c871e4bdd784789dd",
+                         "timestamp":  "2025-10-20T00:00:00Z"
+                     },
+                     {
+                         "version":  "1.0.0",
+                         "changelog":  "https://github.com/trebor048/nothing/blob/main/CHANGELOG.md",
+                         "targetAbi":  "10.8.0.0",
+                         "sourceUrl":  "https://github.com/trebor048/nothing/releases/download/v1.0.0/jellyfin-plugin-milkdropvisualizer.zip",
+                         "checksum":  "sha256:5b0546b47ecb3f7479baae9fe0d36dd36eccd4fc86ae9a4c871e4bdd784789dd",
+                         "timestamp":  "2025-10-10T00:00:00Z"
+                     }
+                 ]
+}

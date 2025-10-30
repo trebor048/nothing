@@ -1,0 +1,410 @@
+/* 🌀 ULTRA-ENHANCED MILKDROP VISUALIZER STYLES v2.1 — FINAL FUSION */
+
+:root {
+  --glow-intensity: 0;
+  --pulse-speed: 1s;
+  --primary-glow: #667eea;
+  --secondary-glow: #ff6b6b;
+  --canvas-opacity: 0.92;
+  --theme-background: rgba(8, 8, 16, 0.92);
+  --theme-border: rgba(102, 126, 234, 0.25);
+  --theme-text: rgba(255, 255, 255, 0.9);
+  --theme-accent: #667eea;
+  --theme-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+}
+
+@layer base, components, effects;
+
+@layer base {
+  .milkdrop-visualizer-canvas {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 99999 !important;
+    pointer-events: none !important;
+    display: none !important;
+    opacity: var(--canvas-opacity);
+    mix-blend-mode: screen;
+    filter: contrast(1.2) brightness(1.1);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    transform: scale(1.02);
+    will-change: opacity, transform;
+  }
+
+  .milkdrop-visualizer-canvas.active {
+    display: block !important;
+    animation: canvasPulse 8s infinite alternate ease-in-out;
+  }
+
+  .milkdrop-visualizer-canvas.audio-beat {
+    filter: brightness(1.3) contrast(1.25) saturate(1.2);
+    box-shadow: 0 0 80px var(--primary-glow);
+  }
+
+  @keyframes canvasPulse {
+    0%, 100% { transform: scale(1); filter: brightness(1) contrast(1.1); }
+    50% { transform: scale(1.01); filter: brightness(1.05) contrast(1.15); }
+  }
+}
+
+@layer components {
+  .milkdrop-controls-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin: 0 12px !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+  }
+
+  .milkdrop-toggle-btn,
+  .milkdrop-settings-btn {
+    position: relative !important;
+    background: rgba(10, 10, 20, 0.65) !important;
+    border: 2px solid rgba(102, 126, 234, 0.4) !important;
+    border-radius: 12px !important;
+    color: white !important;
+    cursor: pointer !important;
+    font-size: 18px !important;
+    padding: 10px 14px !important;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    backdrop-filter: blur(16px) !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    isolation: isolate;
+  }
+
+  .milkdrop-toggle-btn::before,
+  .milkdrop-settings-btn::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: radial-gradient(circle at center, rgba(102, 126, 234, 0.3), transparent 70%) !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+    z-index: -1;
+  }
+
+  .milkdrop-toggle-btn:hover::before,
+  .milkdrop-settings-btn:hover::before {
+    opacity: 1 !important;
+  }
+
+  .milkdrop-toggle-btn:hover,
+  .milkdrop-settings-btn:hover {
+    border-color: var(--primary-glow) !important;
+    transform: translateY(-2px) scale(1.03) !important;
+    box-shadow:
+      0 8px 24px rgba(102, 126, 234, 0.5),
+      0 0 20px rgba(102, 126, 234, 0.3) !important;
+  }
+
+  .milkdrop-toggle-btn:active,
+  .milkdrop-settings-btn:active {
+    transform: translateY(0) scale(1) !important;
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.4),
+      0 0 8px rgba(102, 126, 234, 0.2) !important;
+  }
+
+  .milkdrop-toggle-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border-color: transparent !important;
+    box-shadow:
+      0 0 30px rgba(102, 126, 234, 0.7),
+      0 0 60px rgba(118, 75, 162, 0.4) !important;
+    animation: activeGlowPulse 2s infinite alternate;
+  }
+
+  @keyframes activeGlowPulse {
+    0% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.6), 0 0 40px rgba(118, 75, 162, 0.3); }
+    100% { box-shadow: 0 0 35px rgba(102, 126, 234, 0.9), 0 0 70px rgba(118, 75, 162, 0.5); }
+  }
+}
+
+@layer effects {
+  .milkdrop-controls-panel {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(0.85) !important;
+    background: var(--theme-background) !important;
+    backdrop-filter: blur(32px) saturate(1.3) !important;
+    -webkit-backdrop-filter: blur(32px) saturate(1.3) !important;
+    border: 1px solid var(--theme-border) !important;
+    border-radius: 20px !important;
+    box-shadow:
+      var(--theme-shadow),
+      0 0 0 1px rgba(102, 126, 234, 0.1),
+      0 0 40px rgba(102, 126, 234, 0.2) !important;
+    z-index: 100000 !important;
+    min-width: 340px !important;
+    max-width: 420px !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    pointer-events: auto !important;
+    overflow: hidden;
+  }
+
+  .milkdrop-controls-panel.visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+
+  .milkdrop-controls-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 22px 26px 18px !important;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.15) !important;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), transparent);
+  }
+
+  .milkdrop-controls-header h3 {
+    margin: 0 !important;
+    color: var(--theme-text) !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+  }
+
+  .milkdrop-close-btn {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: none !important;
+    color: var(--theme-text) !important;
+    cursor: pointer !important;
+    font-size: 24px !important;
+    padding: 0 !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .milkdrop-close-btn:hover {
+    background: rgba(102, 126, 234, 0.3) !important;
+    color: white !important;
+    transform: rotate(90deg) !important;
+  }
+
+  .milkdrop-controls-content {
+    padding: 20px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .milkdrop-control-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .milkdrop-control-group label {
+    color: var(--theme-text) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .milkdrop-value {
+    color: var(--theme-accent) !important;
+    font-weight: 600 !important;
+  }
+
+  .milkdrop-control-group select {
+    background: rgba(30, 30, 50, 0.6) !important;
+    border: 1px solid rgba(102, 126, 234, 0.3) !important;
+    border-radius: 8px !important;
+    color: white !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    transition: all 0.25s ease !important;
+  }
+
+  .milkdrop-control-group select:focus {
+    outline: none !important;
+    border-color: var(--theme-accent) !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.35) !important;
+  }
+
+  .milkdrop-control-group input[type="range"] {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 100% !important;
+    height: 6px !important;
+    border-radius: 3px !important;
+    background: linear-gradient(to right, rgba(102,126,234,0.2), rgba(118,75,162,0.2)) !important;
+    outline: none !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .milkdrop-control-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    cursor: pointer !important;
+    box-shadow:
+      0 0 0 2px rgba(102, 126, 234, 0.8),
+      0 0 12px rgba(102, 126, 234, 0.6) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .milkdrop-control-group input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2) !important;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5) !important;
+  }
+
+  .milkdrop-control-group input[type="range"]::-moz-range-thumb {
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    cursor: pointer !important;
+    border: none !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .milkdrop-control-group input[type="range"]::-moz-range-thumb:hover {
+    transform: scale(1.2) !important;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5) !important;
+  }
+
+  .milkdrop-random-preset-btn,
+  .milkdrop-reset-btn {
+    background: linear-gradient(135deg, #667eea 0%, #ff6b6b 100%) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    color: white !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    padding: 10px 16px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    flex: 1 !important;
+  }
+
+  .milkdrop-random-preset-btn:hover,
+  .milkdrop-reset-btn:hover {
+    transform: translateY(-3px) !important;
+    box-shadow:
+      0 8px 24px rgba(102, 126, 234, 0.5),
+      0 0 20px rgba(255, 107, 107, 0.4) !important;
+  }
+
+  .milkdrop-random-preset-btn:active,
+  .milkdrop-reset-btn:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4) !important;
+  }
+
+  .milkdrop-control-group:last-child {
+    flex-direction: row !important;
+    gap: 12px !important;
+  }
+
+  /* Keyboard Shortcuts */
+  .milkdrop-keyboard-shortcuts {
+    margin-top: 16px !important;
+    padding-top: 16px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .milkdrop-keyboard-shortcuts h4 {
+    margin: 0 0 12px 0 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .milkdrop-shortcuts-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px 16px !important;
+    font-size: 12px !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .milkdrop-shortcuts-grid div {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .milkdrop-shortcuts-grid kbd {
+    background: rgba(20, 20, 40, 0.7) !important;
+    border: 1px solid rgba(102, 126, 234, 0.25) !important;
+    border-radius: 4px !important;
+    padding: 2px 6px !important;
+    font-size: 11px !important;
+    font-family: monospace !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+    min-width: 20px !important;
+    text-align: center !important;
+  }
+}
+
+/* 🌀 ANIMATED ENTRY */
+.milkdrop-controls-content > .milkdrop-control-group {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 MOBILE TWEAKS */
+@media (max-width: 768px) {
+  .milkdrop-controls-panel {
+    min-width: 280px !important;
+    max-width: 94vw !important;
+    border-radius: 18px !important;
+  }
+
+  .milkdrop-toggle-btn,
+  .milkdrop-settings-btn {
+    font-size: 16px !important;
+    padding: 8px 12px !important;
+  }
+
+  .milkdrop-controls-header {
+    padding: 16px 20px 12px !important;
+  }
+
+  .milkdrop-controls-content {
+    padding: 16px 20px !important;
+  }
+
+  .milkdrop-control-group:last-child {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+}
+
+/* 🎛️ NEON THEME OVERRIDE */
+body[data-theme="neon"] .milkdrop-controls-panel {
+  box-shadow:
+    0 0 40px rgba(0, 255, 255, 0.5),
+    0 0 80px rgba(255, 0, 255, 0.3),
+    0 25px 50px -12px rgba(0, 0, 0, 0.8) !important;
+  border-color: rgba(0, 255, 255, 0.4) !important;
+}

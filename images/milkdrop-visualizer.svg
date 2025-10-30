@@ -1,0 +1,43 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="wave" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0099cc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="256" height="256" fill="url(#bg)" rx="32"/>
+
+  <!-- Waveform visualization -->
+  <g transform="translate(32, 64)">
+    <!-- Left channel -->
+    <rect x="0" y="40" width="8" height="80" fill="url(#wave)" opacity="0.8"/>
+    <rect x="12" y="20" width="8" height="120" fill="url(#wave)" opacity="0.9"/>
+    <rect x="24" y="60" width="8" height="40" fill="url(#wave)" opacity="0.7"/>
+    <rect x="36" y="30" width="8" height="100" fill="url(#wave)" opacity="0.85"/>
+    <rect x="48" y="50" width="8" height="60" fill="url(#wave)" opacity="0.75"/>
+
+    <!-- Right channel -->
+    <rect x="72" y="45" width="8" height="70" fill="url(#wave)" opacity="0.8"/>
+    <rect x="84" y="25" width="8" height="110" fill="url(#wave)" opacity="0.9"/>
+    <rect x="96" y="55" width="8" height="50" fill="url(#wave)" opacity="0.7"/>
+    <rect x="108" y="35" width="8" height="90" fill="url(#wave)" opacity="0.85"/>
+    <rect x="120" y="40" width="8" height="80" fill="url(#wave)" opacity="0.75"/>
+
+    <!-- Center spectrum bars -->
+    <rect x="144" y="20" width="6" height="120" fill="#ff6b6b" opacity="0.9"/>
+    <rect x="154" y="40" width="6" height="80" fill="#4ecdc4" opacity="0.8"/>
+    <rect x="164" y="30" width="6" height="100" fill="#45b7d1" opacity="0.85"/>
+    <rect x="174" y="50" width="6" height="60" fill="#f9ca24" opacity="0.75"/>
+  </g>
+
+  <!-- Play button overlay -->
+  <circle cx="192" cy="192" r="24" fill="rgba(255,255,255,0.2)" stroke="url(#wave)" stroke-width="2"/>
+  <path d="M185 180 L203 192 L185 204 Z" fill="white"/>
+</svg>
